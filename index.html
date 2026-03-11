@@ -2,39 +2,37 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <title>視線読書ビューア</title>
-  <link rel="stylesheet" href="style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>読書ビューア</title>
+  <link rel = "stylesheet" href="style.css">
 </head>
 
 <body>
+  <h1>読書ビューア</h1>
 
-  <!-- タイトル -->
-  <h1>視線読書ビューア</h1>
-
-  <!-- 本文表示エリア -->
   <div id="book-area">
-    <p id="page-text">
-      ここに本文が表示されます
-    </p>
+    <!-- 左ページ -->
+    <div class= "page">
+      <p id = "page-left"></p>
+      <!-- 左下の番号 -->
+      <span id = "page-count-left" class = "page-number left-number"></span>
+    </div>
+
+  <!-- 右ページ -->
+  <div class = "page">
+    <p id = "page-right"></p>
+    <!-- 右下の番号 -->
+      <span id = "page-count-right" class = "page-number right-number"></span>
   </div>
 
-  <!-- 操作エリア -->
-  <div id="controls">
+  </div>
 
-    <!-- 前へボタン -->
+  <div id="control">
     <button id="prev-btn">前へ</button>
+    <!-- 改行しないので -->
 
-    <!-- ページ番号 -->
-    <span id="page-indicator">
-      1 / 5
-    </span>
-
-    <!-- 次へボタン -->
     <button id="next-btn">次へ</button>
-
   </div>
-
   <script src="script.js"></script>
-
 </body>
 </html>

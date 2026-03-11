@@ -1,108 +1,61 @@
-body {
-  margin: 0;
-  padding: 0;
-  min-height: 100vh;
-  font-family: "Hiragino Sans", "Yu Gothic", "Meiryo", sans-serif;
-  background: linear-gradient(to bottom, #f5f7fa, #e4ecf5);
-  color: #333;
+body{
+  font-family: "Hiragino Mincho ProN", "Yu Mincho", serif;
+  background:#f5f5f5;
+  margin:0;
+  padding:30px;
+  text-align:center; 
 }
 
-h1 {
-  text-align: center;
-  margin-top: 40px;
-  margin-bottom: 24px;
-  font-size: 32px;
-  font-weight: 700;
-  color: #2c3e50;
-}
-
-#book-area {
-  max-width: 760px;
-  min-height: 360px;
+#book-area{
   margin: 0 auto;
-  background-color: #ffffff;
-  border-radius: 20px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
-  padding: 40px;
-  box-sizing: border-box;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-#page-text {
-  margin: 0;
-  font-size: 20px;
-  line-height: 2;
-  text-align: left;
-  white-space: pre-wrap;
-}
-
-#controls {
-  margin-top: 28px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 20px;
-}
-
-button {
-  border: none;
-  background-color: #4a90e2;
-  color: white;
-  font-size: 16px;
-  font-weight: 600;
-  padding: 12px 24px;
-  border-radius: 999px;
-  cursor: pointer;
-  box-shadow: 0 4px 10px rgba(74, 144, 226, 0.25);
-  transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
-}
-
-button:hover {
-  background-color: #357abd;
-  transform: translateY(-2px);
-  box-shadow: 0 6px 14px rgba(74, 144, 226, 0.3);
-}
-
-button:active {
-  transform: translateY(0);
-  box-shadow: 0 3px 8px rgba(74, 144, 226, 0.2);
-}
-
-#page-indicator {
+  padding:40px;
+  width: 800px;
+  height: 500px;
+  box-shadow:0 4px 12px rgba(0,0,0,0.25);
   font-size: 18px;
-  font-weight: 600;
-  color: #2c3e50;
-  min-width: 60px;
+  display: flex;
   text-align: center;
+  background:#eaeaea;
 }
 
-@media (max-width: 768px) {
-  h1 {
-    font-size: 26px;
-    margin-top: 24px;
-  }
+#control{
+  margin-top:30px;
+}
 
-  #book-area {
-    margin: 0 16px;
-    padding: 24px;
-    min-height: 280px;
-  }
+button{
+  cursor:pointer;
+  margin:0 20px;
+  padding:10px 20px;
+}
 
-  #page-text {
-    font-size: 18px;
-    line-height: 1.8;
-  }
+.page{
+  /* containerの幅を均等に分ける */
+  flex:1; 
+  background:white;
+  writing-mode:vertical-rl;
+  text-orientation: upright;
+  text-align: start;
+  padding: 10px;
+  position:relative;
+}
 
-  #controls {
-    gap: 12px;
-    flex-wrap: wrap;
-    padding: 0 16px;
-  }
+/* class="page" の要素のうち親の中で一番最初にあるもの。1つ目のページの右側に線を引く*/
+.page:first-child{
+  border-right: 2px solid #ddd;
+}
 
-  button {
-    padding: 10px 20px;
-    font-size: 15px;
-  }
+.page-number{
+  font-size: 14px;
+  color: #555;
+  writing-mode: horizontal-tb;
+  position:absolute;
+}
+
+.left-number{
+  left:10px;
+  bottom:10px;
+}
+.right-number{
+  right:10px;
+  bottom:10px;
 }
