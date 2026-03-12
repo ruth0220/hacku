@@ -106,6 +106,7 @@ body{
 <div class="cal-point" style="top:10%;left:90%"></div>
 
 <div class="cal-point" style="top:50%;left:10%"></div>
+<div class="cal-point" style="top:50%;left:50%"></div>
 <div class="cal-point" style="top:50%;left:90%"></div>
 
 <div class="cal-point" style="top:90%;left:10%"></div>
@@ -132,7 +133,7 @@ let smoothY = window.innerHeight/2
 let gazeHistory=[]
 const historyLength=5
 
-const baseSmooth=0.05
+const baseSmooth=0.1
 
 /* ===== ページ管理 ===== */
 
@@ -155,7 +156,7 @@ pageText.innerText = "PAGE " + page
 
 let gazeStart = null
 let gazeStartPrev = null
-const holdTime = 2000 // 2秒
+const holdTime = 1000 // 2秒
 
 function checkPageTurn(x, y){
 
