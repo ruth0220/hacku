@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>読書ビューア - 視線追跡</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/webgazer@2.1.0/dist/webgazer.min.js"></script>
+</head>
+
+<body>
+  <div id="calibration-overlay">
+    <div id="instruction">
+      青い丸を見ながら<br>それぞれ3回クリックしてください
+    </div>
+    <div class="cal-point" style="top:10%;left:10%"></div>
+    <div class="cal-point" style="top:10%;left:50%"></div>
+    <div class="cal-point" style="top:10%;left:90%"></div>
+    <div class="cal-point" style="top:50%;left:10%"></div>
+    <div class="cal-point" style="top:50%;left:50%"></div>
+    <div class="cal-point" style="top:50%;left:90%"></div>
+    <div class="cal-point" style="top:90%;left:10%"></div>
+    <div class="cal-point" style="top:90%;left:50%"></div>
+    <div class="cal-point" style="top:90%;left:90%"></div>
+  </div>
+
+  <div id="gaze">
+    <div id="halo"></div>
+    <div id="dot"></div>
+  </div>
+  <div id="reading-ruler" style="display: none;"></div>
+
+  <h1>読書ビューア</h1>
+  <div id="book-area">
+    <div class="page">
+      <p id="page-left"></p>
+      <span id="page-count-left" class="page-number left-number"></span>
+    </div>
+    <div class="page">
+      <p id="page-right"></p>
+      <span id="page-count-right" class="page-number right-number"></span>
+    </div>
+  </div>
+
+  <div id="rule20-overlay" style="display: none;">
+  <div class="rule20-content">
+    <h2>👁️ 20-20-20 ルール 👁️</h2>
+    <p>1分間画面を注視しました（テスト設定）。</p>
+    <p>画面から目を離し、<strong>約6m先を20秒間</strong>眺めてください。</p>
+    
+    <div id="rule20-timer">20.0</div>
+    
+    <p id="rule20-warning">
+      ⚠️ 画面を見ています！遠くを見てください ⚠️
+    </p>
+  </div>
+</div>
+
+  <div id="control">
+    <button id="prev-btn">前へ</button>
+    <button id="next-btn">次へ</button>
+  </div>
+
+  <div id="nextHint" class="page-hint left">◀ 次のページ</div>
+  <div id="prevHint" class="page-hint right">前のページ ▶</div>
+
+  <script src="script.js"></script>
+  <script src="eyetracking.js"></script>
+
+</body>
+</html>
