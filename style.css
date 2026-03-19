@@ -32,8 +32,8 @@ button{
   /* containerの幅を均等に分ける */
   flex:1; 
   background:white;
-  writing-mode:vertical-rl;
-  text-orientation: upright;
+  writing-mode: horizontal-tb;   /* ←変更 */
+  text-orientation: mixed; 
   text-align: start;
   padding: 10px;
   position:relative;
@@ -156,28 +156,47 @@ button{
   opacity: 0; /* 初期状態は非表示 */
   transition: opacity 0.3s;
 }
-.page-hint{
-  position:fixed;
-  bottom:40px;
-  font-size:18px;
-  padding:12px 18px;
-  background:rgba(0,0,0,0.65);
-  color:white;
-  border-radius:10px;
-  opacity:0;
-  transition:opacity 0.3s;
-  pointer-events:none;
-  z-index:1000;
+/* ===== 視線ゲージ・ヒントUIのスタイル ===== */
+.page-hint {
+  position: fixed;
+  bottom: 40px;
+  font-size: 18px;
+  padding: 12px 18px;
+  color: white;
+  border-radius: 10px;
+  opacity: 0;
+  transition: opacity 0.3s;
+  pointer-events: none;
+  z-index: 1000;
+  overflow: hidden; /* 角丸からはみ出ないようにする */
+  /* ★修正: background はここでは指定せず、下の ::before で作ります */
 }
 
-.page-hint.left{
-  left:30px;
+/* ★追加: 黒い半透明の背景を「一番下の層」として明示的に作る */
+.page-hint::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0, 0, 0, 0.65);
+  z-index: -2; /* ゲージよりさらに奥（一番下）に配置 */
 }
 
-.page-hint.right{
-  right:30px;
+.page-hint.left { left: 30px; }
+.page-hint.right { right: 30px; }
+
+.page-hint.show { opacity: 1; }
+
+/* ★視線ゲージ（横に伸びるプログレスバー） */
+.gaze-bar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 0%; 
+  /* ★修正: 色を少し濃く（0.9）して見やすくしました */
+  background-color: rgba(76, 175, 80, 0.9); 
+  z-index: -1; /* 背景(-2)より上で、文字(0)より下の層に配置 */
+  transition: width 0.1s linear; 
 }
 
-.page-hint.show{
-  opacity:1;
-}
+

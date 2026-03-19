@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>読書ビューア - 視線追跡</title>
+  <title>読書ビューア</title>
   <link rel="stylesheet" href="style.css">
   <script src="https://cdn.jsdelivr.net/npm/webgazer@2.1.0/dist/webgazer.min.js"></script>
 </head>
@@ -28,9 +28,11 @@
     <div id="halo"></div>
     <div id="dot"></div>
   </div>
-  <div id="reading-ruler" style="display: none;"></div>
 
   <h1>読書ビューア</h1>
+  <p>出典 https://www.gutenberg.org/ebooks/55</p>
+  <p>利用規約 https://www.gutenberg.org/policy/terms_of_use.html</p>
+  
   <div id="book-area">
     <div class="page">
       <p id="page-left"></p>
@@ -42,11 +44,30 @@
     </div>
   </div>
 
+  <div id="translation-hint" style="display: none; position: absolute; background: rgba(0,0,0,0.8); color: white; padding: 15px; border-radius: 8px; z-index: 1000; text-align: center;">
+    解説する
+    <div class="gaze-bar" style="width: 0%; height: 5px; background: #4CAF50; margin-top: 10px; transition: width 0.1s;"></div>
+  </div>
+
+  <div id="translation-modal" style="display: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0,0,0,0.6); z-index: 2000; justify-content: center; align-items: center;">
+    <div style="background: white; color: #333; padding: 30px; border-radius: 12px; max-width: 80%; width: 600px; text-align: left; box-shadow: 0 4px 20px rgba(0,0,0,0.3);">
+      <h2>解説</h2>
+      <p id="ai-explanation-text" style="line-height: 1.6; font-size: 1.1rem;">AIの解説文します...</p>
+      <div style="text-align: right; margin-top: 20px;">
+        <button id="close-modal-btn" style="padding: 10px 20px; font-size: 1rem; cursor: pointer;">閉じる</button>
+      </div>
+    </div>
+    <div id="back-to-viewer-btn" style="position: absolute; bottom: 30px; right: 30px; padding: 15px 30px; background: #333; color: #fff; border-radius: 8px; text-align: center;">
+  ビューアに戻る
+  <div class="gaze-bar" style="position: absolute; bottom: 0; left: 0; height: 5px; background-color: #4CAF50; width: 0%; transition: width 0.1s;"></div>
+</div>
+  </div>
+
   <div id="rule20-overlay" style="display: none;">
   <div class="rule20-content">
-    <h2>👁️ 20-20-20 ルール 👁️</h2>
+    <h2>20-20-20 ルール</h2>
     <p>1分間画面を注視しました（テスト設定）。</p>
-    <p>画面から目を離し、<strong>約6m先を20秒間</strong>眺めてください。</p>
+    <p>画面から20秒間目を離してください。</p>
     
     <div id="rule20-timer">20.0</div>
     
@@ -61,11 +82,18 @@
     <button id="next-btn">次へ</button>
   </div>
 
-  <div id="nextHint" class="page-hint left">◀ 次のページ</div>
-  <div id="prevHint" class="page-hint right">前のページ ▶</div>
+  <div id="prevHint" class="page-hint left">
+    ◀ 前のページ
+    <div class="gaze-bar"></div>
+  </div>
+  
+  <div id="nextHint" class="page-hint right">
+    次のページ ▶
+    <div class="gaze-bar"></div>
+  </div>
 
   <script src="script.js"></script>
+  <script src="config.js"></script>
   <script src="eyetracking.js"></script>
-
 </body>
 </html>
